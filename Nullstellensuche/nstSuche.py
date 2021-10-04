@@ -24,7 +24,7 @@ print("RegulaFalsi \t\t\tNullstelle: m =  " + str(m))
 
 m = sekant(a, b, func, epsilon)
 print("Sekantenmethode \t\tNullstelle: m =  " + str(m))
-
+print("test")
 
 # vars Newton numpy
 # f(x) = x^2 - 1
