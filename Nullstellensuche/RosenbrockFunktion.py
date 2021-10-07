@@ -1,15 +1,30 @@
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Data for plotting
-t = np.arange(0.0, 2.0, 0.01)
-s = 1 + np.sin(2 * np.pi * t)
-fig, ax = plt.subplots()
-ax.plot(t, s)
+fig = plt.figure()
+ax = Axes3D(fig, azim=-128, elev=43)
+s = .05
+X = np.arange(-2, 2.+s, s)
+Y = np.arange(-1, 3.+s, s)
+X, Y = np.meshgrid(X, Y)
+Z = (1.-X)**2 + 100.*(Y-X*X)**2
+# ax.plot_surface(X, Y, Z, rstride=1, cstride=1, norm = LogNorm(),
+#                 cmap="viridis")
+# Without using `` linewidth=0, edgecolor='none' '', the code may produce a
+# graph with wide black edges, which will make the surface look much darker
+# than the one illustrated in the figure above.
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, norm=LogNorm(),
+                linewidth=0, edgecolor='none', cmap="viridis")
 
-ax.set(xlabel='time (s)', ylabel='voltage (mV)',
-        title='About as simple as it gets, folks')
-ax.grid()
+# Set the axis limits so that they are the same as in the figure above.
+ax.set_xlim([-2, 2.0])                                                       
+ax.set_ylim([-1, 3.0])                                                       
+ax.set_zlim([0, 2500]) 
 
-#fig.savefig("test.png")
+plt.xlabel("x")
+plt.ylabel("y")
+# plt.savefig("Rosenbrock_function.svg", bbox_inches="tight")
+
 plt.show()
