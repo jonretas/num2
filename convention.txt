@@ -1,0 +1,10 @@
+Konvention für Git-Projekt:
+
+- grundsätzlich ist eine lower Camel Case Notation zu verwenden:
+  d.h. z.B  lowerCamelCase.py
+
+- Die auszuführenden Skripte sollten identisch zum übergeordnete Ordner benannt werden.
+
+- Kommentare in jeder verwendeten Funktion mit kurzer Beschreibung 
+
+Aktualisiert 11.10.2021
